@@ -1,0 +1,15 @@
+﻿@model CalculationModel
+@{
+    var action = ViewContext.RouteData.Values["Action"] as string;
+    var op = new SelectList(new[] { "+", "-", "*", "/" });
+    ViewBag.Title = action;
+}
+
+<h1>@action</h1>
+
+<form asp-controller="Main" asp-action="@action">
+    <input asp-for="X" /><br />
+    <select asp-for="Result" asp-items="op"></select><br />
+    <input asp-for="Y" /><br />
+    <input type="submit" value="Submit" />
+</form>
